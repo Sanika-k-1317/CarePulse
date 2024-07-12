@@ -18,6 +18,7 @@ import Image from "next/image";
 import {
   createAppointment,
   updateAppointment,
+  getRecentAppointmentsList,
 } from "@/lib/actions/appointment.actions";
 import { Appointment } from "@/types/appwrite.types";
 
@@ -37,6 +38,7 @@ const AppointmentForm = ({
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   // 1. Define your form.
+
   const AppointmentFormValidation = getAppointmentSchema(type);
   const form = useForm<z.infer<typeof AppointmentFormValidation>>({
     resolver: zodResolver(AppointmentFormValidation),
@@ -100,6 +102,7 @@ const AppointmentForm = ({
         const updatedappointment = await updateAppointment(appointmentToUpdate);
         if (updatedappointment) {
           setOpen && setOpen(false); //checking if setOpen is present and setting it to false
+          console.log("updating the page");
           form.reset();
         }
       }

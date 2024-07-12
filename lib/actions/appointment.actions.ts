@@ -62,6 +62,7 @@ export const getRecentAppointmentsList = async () => {
         } else if (appointment.status === "cancelled") {
           acc.cancelledCount += 1;
         }
+
         return acc;
       },
       initialCounts
@@ -89,6 +90,7 @@ export const updateAppointment = async ({
       appointmentId,
       appointment
     );
+
     if (!updatedAppointment) {
       throw new Error("Appointment not found");
     }
@@ -109,6 +111,7 @@ ${
     await sendSMSNotification(userId, smsMessage);
 
     revalidatePath("/admin");
+
     return parseStringify(updatedAppointment);
   } catch (error) {
     console.log(error);

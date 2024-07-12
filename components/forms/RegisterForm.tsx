@@ -47,7 +47,6 @@ const RegisterForm = ({ user }: { user: User }) => {
       values.identificationDocument &&
       values.identificationDocument.length > 0
     ) {
-      console.log("hii kutri");
       const blobFile = new Blob([values.identificationDocument[0]], {
         type: values.identificationDocument[0].type,
       });

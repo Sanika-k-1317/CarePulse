@@ -10,6 +10,7 @@ export default async function NewAppointment({
   params: { userId },
 }: SearchParamProps) {
   const patient = await getPatient(userId);
+  console.log(userId);
   Sentry.metrics.set("user_view_new-appointment", patient.name);
 
   return (
